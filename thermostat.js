@@ -3,6 +3,7 @@ class Thermostat {
     constructor() {
         this.temperature = 20;
         this.psm = true;
+        this.max = 25;
     };
 
     getTemp() {
@@ -10,7 +11,9 @@ class Thermostat {
     };
 
     up() {
-        this.temperature++;
+        if(this.temperature < this.max) {
+            this.temperature++;
+        };
     };
 
     down() {
@@ -20,20 +23,27 @@ class Thermostat {
     };
 
     setPSM(value) {
+        if(value === true){
+            this.max = 25;
+        } else {
+            this.max = 32;
+        }
         this.psm = value;
     };
+
+    reset() {
+        this.temperature = 20;
+    }
+
+    energyUsage() {
+        if(this.temperature < 18) {
+            return 'low-usage';
+        } else if(this.temperature > 25) {
+            return 'high-usage';
+        } else {
+            return 'medium-usage';
+        };
+    };
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = Thermostat;
