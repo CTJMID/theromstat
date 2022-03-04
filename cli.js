@@ -9,19 +9,20 @@ const rl = readline.createInterface({
 });
 
 
-(function loop() {
+const cliprompt = () => {
     rl.question('Enter Command > ', (input) => {
         switch(input) {
-            case 'up':
-                thermostat.up();
-                console.log(`The temperature is ${thermostat.getTemp()}`);
+            case('up'):
+                thermostat.up(); 
                 break;
-            case 'down':
+            case('down'):
                 thermostat.down();
-                console.log(`The temperature is ${thermostat.getTemp()}`);
-        }  
+        };
+     console.log(`The temperature is ${thermostat.getTemp()}`);
+     cliprompt() 
     });
-});
+};
+cliprompt()
 
 
 
