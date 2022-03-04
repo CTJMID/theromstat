@@ -1,9 +1,11 @@
+const WeatherApi = require('./weatherApi')
 
 class Thermostat {
-    constructor() {
+    constructor(weather) {
         this.temperature = 20;
         this.psm = true;
         this.max = 25;
+        this.weather = weather
     };
 
     getTemp() {
@@ -44,6 +46,12 @@ class Thermostat {
             return 'medium-usage';
         };
     };
+
+    setCity(city) {
+    this.weather.fetchWeatherData(city, (settemp) => {
+        this.temperature = settemp.main.temp
+    })
+    }
 };
 
 module.exports = Thermostat;

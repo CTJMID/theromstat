@@ -17,6 +17,12 @@ const cliprompt = () => {
                 break;
             case('down'):
                 thermostat.down();
+                break;
+            case('psm on'):
+                thermostat.setPSM(true);
+                break;
+            case('psm off'):
+                thermostat.setPSM(false);
         };
      console.log(`The temperature is ${thermostat.getTemp()}`);
      cliprompt() 
